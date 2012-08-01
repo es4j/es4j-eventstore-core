@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.es4j.eventstore.core.OptimisticEventStoreTests.OptimisticEventStoreTest.When_a_precommit_hook_rejects_a_commit
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec

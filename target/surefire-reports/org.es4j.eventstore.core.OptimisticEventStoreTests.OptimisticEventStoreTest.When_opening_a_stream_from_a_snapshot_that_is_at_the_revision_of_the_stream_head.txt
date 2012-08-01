@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.es4j.eventstore.core.OptimisticEventStoreTests.OptimisticEventStoreTest.When_opening_a_stream_from_a_snapshot_that_is_at_the_revision_of_the_stream_head
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 sec

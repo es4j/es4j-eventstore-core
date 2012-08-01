@@ -1,0 +1,105 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.es4j.eventstore</groupId>
+    <artifactId>es4j-eventstore-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>es4j-eventstore-core</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.es4j.dotnet</groupId>
+            <artifactId>es4j-dotnet-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.es4j.util</groupId>
+            <artifactId>es4j-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>        
+        <dependency>
+            <groupId>org.es4j.messaging</groupId>
+            <artifactId>es4j-messaging-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.es4j.serialization</groupId>
+            <artifactId>es4j-serialization-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency-->
+        <dependency>
+            <groupId>org.es4j.eventstore</groupId>
+            <artifactId>es4j-eventstore-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <excludes>
+                        <exclude>LogFactory.java</exclude>
+                        <exclude>ILog.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12</version>
+                <configuration>
+                    <includes>
+                        <include>**/When*.java</include>
+                    </includes>
+                    <excludes>
+<!-- Upconverver -->
+<exclude>**/When_an_event_converter_implements_the_IConvertEvents_interface_explicitly.java</exclude>
+<exclude>**/When_opening_a_commit_that_does_not_have_convertible_events.java</exclude>
+<exclude>**/When_opening_a_commit_that_has_convertible_events.java</exclude>
+
+<!-- Asynchronous -->
+<exclude>**/When_asynchronously_scheduling_a_commit_for_dispatch.java</exclude>
+<exclude>**/When_instantiating_the_asynchronous_dispatch_scheduler.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

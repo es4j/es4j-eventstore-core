@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.es4j.eventstore.core.OptimisticEventStoreTests.OptimisticEventStoreTest.When_reading_from_revision_zero
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec

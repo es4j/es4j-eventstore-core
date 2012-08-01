@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.es4j.eventstore.core.OptimisticEventStoreTests.OptimisticEventStoreTest.When_committing_with_an_unidentified_attempt_back_to_the_stream
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec

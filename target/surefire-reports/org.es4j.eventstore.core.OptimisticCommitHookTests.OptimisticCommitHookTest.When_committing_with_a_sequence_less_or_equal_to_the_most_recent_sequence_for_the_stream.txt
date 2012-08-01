@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.es4j.eventstore.core.OptimisticCommitHookTests.OptimisticCommitHookTest.When_committing_with_a_sequence_less_or_equal_to_the_most_recent_sequence_for_the_stream
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
