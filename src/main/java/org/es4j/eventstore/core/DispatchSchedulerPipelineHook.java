@@ -23,11 +23,11 @@ public class DispatchSchedulerPipelineHook implements IPipelineHook {
 
     @Override
     public void close() throws Exception {
-        this.dispose_FORNOW();
+        this.dispose();
     }
 
     @Override
-    public void dispose_FORNOW() throws Exception {
+    public void dispose() throws Exception {
         this.dispose(true);
         GC.suppressFinalize(this);
     }

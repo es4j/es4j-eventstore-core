@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.es4j.eventstore.core.dispatchertests.SynchronousDispatcherTests.When_synchronously_scheduling_a_commit_for_dispatch
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec

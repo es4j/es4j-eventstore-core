@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.es4j.eventstore.core.dispatchertests.AsynchronousDispatcherTests.When_disposing_the_async_dispatch_scheduler
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.501 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec

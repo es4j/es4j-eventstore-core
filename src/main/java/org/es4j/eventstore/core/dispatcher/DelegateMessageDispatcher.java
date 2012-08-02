@@ -16,10 +16,10 @@ public class DelegateMessageDispatcher implements IDispatchCommits {
 
     @Override
     public void close() {
-        dispose_FORNOW();
+        dispose();
     }
     @Override
-    public void dispose_FORNOW() {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }

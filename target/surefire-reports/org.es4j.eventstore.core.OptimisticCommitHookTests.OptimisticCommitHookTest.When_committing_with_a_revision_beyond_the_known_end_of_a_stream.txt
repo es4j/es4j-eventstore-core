@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.es4j.eventstore.core.OptimisticCommitHookTests.OptimisticCommitHookTest.When_committing_with_a_revision_beyond_the_known_end_of_a_stream
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec

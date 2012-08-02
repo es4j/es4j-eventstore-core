@@ -40,10 +40,10 @@ public class SynchronousDispatchScheduler implements IScheduleDispatches {
 
     @Override
     public void close() throws Exception {
-        dispose_FORNOW();
+        dispose();
     }
     @Override
-    public void dispose_FORNOW() throws Exception {
+    public void dispose() throws Exception {
         this.dispose(true);
         GC.suppressFinalize(this);
     }

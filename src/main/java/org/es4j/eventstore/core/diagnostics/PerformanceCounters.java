@@ -78,7 +78,7 @@ class PerformanceCounters implements IDisposable {
 
     @Override
     public void close() {
-        dispose_FORNOW();
+        dispose();
     }
     //~PerformanceCounters()
     public void PerformanceCounterDestructor() {
@@ -86,7 +86,7 @@ class PerformanceCounters implements IDisposable {
     }
 
     @Override
-    public void dispose_FORNOW() {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }

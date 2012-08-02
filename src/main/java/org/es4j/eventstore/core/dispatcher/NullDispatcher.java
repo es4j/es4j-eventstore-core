@@ -15,10 +15,10 @@ public final class NullDispatcher implements IScheduleDispatches, IDispatchCommi
 
     @Override
     public void close() {
-        dispose_FORNOW();
+        dispose();
     }
     @Override
-    public void dispose_FORNOW() {
+    public void dispose() {
         logger.debug(Resources.ShuttingDownDispatcher());
         GC.suppressFinalize(this);
     }

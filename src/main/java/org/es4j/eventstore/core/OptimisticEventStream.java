@@ -90,10 +90,10 @@ public class OptimisticEventStream implements IEventStream {
 
     @Override
     public void close() {
-        dispose_FORNOW();
+        dispose();
     }
     @Override
-    public void dispose_FORNOW() {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }

@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.es4j.dotnet</groupId>
-            <artifactId>es4j-dotnet-api</artifactId>
+            <artifactId>es4j-dotnet</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -32,11 +32,6 @@
             <artifactId>es4j-messaging-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--dependency>
-            <groupId>org.es4j.serialization</groupId>
-            <artifactId>es4j-serialization-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency-->
         <dependency>
             <groupId>org.es4j.eventstore</groupId>
             <artifactId>es4j-eventstore-api</artifactId>

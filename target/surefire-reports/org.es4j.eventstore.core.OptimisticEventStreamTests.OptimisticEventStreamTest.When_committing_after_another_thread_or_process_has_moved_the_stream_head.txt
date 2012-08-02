@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.es4j.eventstore.core.OptimisticEventStreamTests.OptimisticEventStreamTest.When_committing_after_another_thread_or_process_has_moved_the_stream_head
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
