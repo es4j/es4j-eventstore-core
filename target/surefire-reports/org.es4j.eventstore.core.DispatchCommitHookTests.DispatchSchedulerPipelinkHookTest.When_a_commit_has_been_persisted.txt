@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.es4j.eventstore.core.DispatchCommitHookTests.DispatchSchedulerPipelinkHookTest.When_a_commit_has_been_persisted
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.861 sec

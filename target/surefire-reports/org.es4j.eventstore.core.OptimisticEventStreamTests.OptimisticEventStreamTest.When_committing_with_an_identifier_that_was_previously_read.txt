@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.es4j.eventstore.core.OptimisticEventStreamTests.OptimisticEventStreamTest.When_committing_with_an_identifier_that_was_previously_read
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec

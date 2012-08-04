@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.es4j.eventstore.core.OptimisticEventStoreTests.OptimisticEventStoreTest.When_the_number_of_commits_is_greater_than_the_number_of_revisions
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec

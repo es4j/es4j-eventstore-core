@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.es4j.eventstore.core.OptimisticEventStreamTests.OptimisticEventStreamTest.When_the_head_event_revision_is_less_than_the_max_desired_revision
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
