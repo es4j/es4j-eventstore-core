@@ -6,8 +6,9 @@ import java.util.List;
 import org.es4j.eventstore.core.conversion.EventUpconverterPipelineHook;
 import org.es4j.eventstore.core.conversion.Converter;
 import java.util.Map;
+import org.es4j.dotnet.Assembly;
 import org.es4j.dotnet.Type;
-import org.es4j.eventstore.api.conversion.IUpconvertEvents;
+import org.es4j.eventstore.api.conversion.UpconvertEvents;
 
 /**
  *
@@ -30,7 +31,7 @@ public class UsingEventConverter {
         Map<Class<?>, Converter<Object, Object>> converters = new HashMap<Class<?>, Converter<Object, Object>>();
         for(Assembly a : toScan) {
             for(Type t : a.getTypes()) {
-                Type i = t.getInterface(IUpconvertEvents/*<?,?>*/.class.getName());
+                Type i = t.getInterface(UpconvertEvents/*<?,?>*/.class.getName());
                 if(i != null) {
                     Type sourceType = i.getGenericArguments().iterator().next();
                 }
@@ -43,7 +44,7 @@ public class UsingEventConverter {
         /*
         var c = from a in toScan
                 from t in a.GetTypes()
-                let i = t.GetInterface(typeof(IUpconvertEvents<,>).FullName)
+                let i = t.GetInterface(typeof(UpconvertEvents<,>).FullName)
                 where i != null
                 let sourceType = i.getGenericArguments().First()
                 let convertMethod = i.getMethods(BindingFlags.Public | BindingFlags.Instance).First()
@@ -112,7 +113,7 @@ public class UsingEventConverter {
 		{
 			var c = from a in toScan
 					from t in a.GetTypes()
-					let i = t.GetInterface(typeof(IUpconvertEvents<,>).FullName)
+					let i = t.GetInterface(typeof(UpconvertEvents<,>).FullName)
 					where i != null
 					let sourceType = i.GetGenericArguments().First()
 					let convertMethod = i.GetMethods(BindingFlags.Public | BindingFlags.Instance).First()
@@ -139,16 +140,16 @@ public class UsingEventConverter {
 		}
 	}
 
-	public class ConvertingEventConverter : IUpconvertEvents<ConvertingEvent, ConvertingEvent2>
+	public class ConvertingEventConverter : UpconvertEvents<ConvertingEvent, ConvertingEvent2>
 	{
 		public ConvertingEvent2 Convert(ConvertingEvent sourceEvent)
 		{
 			return new ConvertingEvent2(sourceEvent.Id, "Temp");
 		}
 	}
-	public class ExplicitConvertingEventConverter : IUpconvertEvents<ConvertingEvent2, ConvertingEvent3>
+	public class ExplicitConvertingEventConverter : UpconvertEvents<ConvertingEvent2, ConvertingEvent3>
 	{
-		ConvertingEvent3 IUpconvertEvents<ConvertingEvent2, ConvertingEvent3>.Convert(ConvertingEvent2 sourceEvent)
+		ConvertingEvent3 UpconvertEvents<ConvertingEvent2, ConvertingEvent3>.Convert(ConvertingEvent2 sourceEvent)
 		{
 			return new ConvertingEvent3(sourceEvent.Id, "Temp", true);
 		}

@@ -84,7 +84,7 @@
                     </includes>
                     <excludes>
 <!-- Upconverver -->
-<!--exclude>**/When_an_event_converter_implements_the_IConvertEvents_interface_explicitly.java</exclude-->
+<exclude>**/When_an_event_converter_implements_the_IConvertEvents_interface_explicitly.java</exclude>
 <exclude>**/When_opening_a_commit_that_does_not_have_convertible_events.java</exclude>
 <exclude>**/When_opening_a_commit_that_has_convertible_events.java</exclude>
 

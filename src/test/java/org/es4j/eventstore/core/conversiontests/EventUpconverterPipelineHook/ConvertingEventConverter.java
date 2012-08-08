@@ -1,13 +1,13 @@
 package org.es4j.eventstore.core.conversiontests.EventUpconverterPipelineHook;
 
-import org.es4j.eventstore.api.conversion.IUpconvertEvents;
+import org.es4j.eventstore.api.conversion.UpconvertEvents;
 
 
 /**
  *
  * @author Esfand
  */
-public class ConvertingEventConverter implements IUpconvertEvents<ConvertingEvent, ConvertingEvent2> {
+public class ConvertingEventConverter extends UpconvertEvents<ConvertingEvent, ConvertingEvent2> {
 
     @Override
     public ConvertingEvent2 convert(ConvertingEvent sourceEvent) {
