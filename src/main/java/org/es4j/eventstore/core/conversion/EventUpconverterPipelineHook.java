@@ -15,9 +15,9 @@ public class EventUpconverterPipelineHook implements IPipelineHook {
     private static final ILog logger = LogFactory.buildLogger(EventUpconverterPipelineHook.class);
 
     //private final Map<Type, Func2<Object, Object>> converters;
-    private final Map<Class, Converter<Object, Object>> converters;
+    private final Map<Class<?>, Converter<Object, Object>> converters;
 
-    public EventUpconverterPipelineHook(Map<Class, Converter<Object, Object>> converters) {
+    public EventUpconverterPipelineHook(Map<Class<?>, Converter<Object, Object>> converters) {
         if (converters == null) {
             throw new ArgumentNullException("converters");
         }

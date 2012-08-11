@@ -2,13 +2,10 @@ package org.es4j.eventstore.core.DispatchCommitHookTests.DispatchSchedulerPipeli
 
 import java.util.UUID;
 import org.es4j.eventstore.core.DispatchSchedulerPipelineHook;
-//import org.es4j.dotnet.DateTime;
-//import org.es4j.dotnet.Guid;
 import org.es4j.eventstore.api.Commit;
 import org.es4j.eventstore.api.dispatcher.IScheduleDispatches;
 import org.es4j.eventstore.core.UnderTest;
 import org.es4j.util.DateTime;
-//import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

@@ -3,8 +3,6 @@ package org.es4j.eventstore.core.OptimisticCommitHookTests.OptimisticCommitHookT
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-//import org.es4j.dotnet.Guid;
-//import org.es4j.dotnet.SystemTime;
 import org.es4j.eventstore.api.Commit;
 import org.es4j.eventstore.api.IPipelineHook;
 import org.es4j.eventstore.api.persistence.StorageException;

@@ -1,8 +1,14 @@
 package org.es4j.eventstore.core.conversiontests.EventUpconverterPipelineHook;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import org.es4j.eventstore.core.conversion.EventUpconverterPipelineHook;
 import org.es4j.eventstore.core.conversion.Converter;
 import java.util.Map;
+import org.es4j.dotnet.Assembly;
+import org.es4j.dotnet.Type;
+import org.es4j.eventstore.api.conversion.UpconvertEvents;
 
 /**
  *
@@ -10,9 +16,9 @@ import java.util.Map;
  */
 public class UsingEventConverter {
 
-    protected static Iterable<Assembly>                                     assemblies;
-    protected static Map<Class/*Type*/, Converter/*Func*/<Object, Object>> converters;
-    protected static EventUpconverterPipelineHook                           eventUpconverter;
+    protected static Iterable<Assembly>                       assemblies;
+    protected static Map<Class<?>, Converter<Object, Object>> converters;
+    protected static EventUpconverterPipelineHook             eventUpconverter;
 
     protected void establishContext() {
         assemblies       = getAllAssemblies();
@@ -20,12 +26,25 @@ public class UsingEventConverter {
         eventUpconverter = new EventUpconverterPipelineHook(converters);
     }
 
-
-    private static Map<Class/*Type*/, Converter/*Func*/<Object, Object>> getConverters(Iterable<Assembly> toScan) {
-        throw new RuntimeException(); /* for now
+    private static Map<Class<?>, Converter<Object, Object>> getConverters(Iterable<Assembly> toScan) {
+        //throw new UnsupportedOperationException("Not yet implemented"); /* for now
+        Map<Class<?>, Converter<Object, Object>> converters = new HashMap<Class<?>, Converter<Object, Object>>();
+        for(Assembly a : toScan) {
+            for(Type t : a.getTypes()) {
+                Type i = t.getInterface(UpconvertEvents/*<?,?>*/.class.getName());
+                if(i != null) {
+                    Type sourceType = i.getGenericArguments().iterator().next();
+                }
+            }
+            
+        }
+        return converters;
+        
+        
+        /*
         var c = from a in toScan
                 from t in a.GetTypes()
-                let i = t.GetInterface(typeof(IUpconvertEvents<,>).FullName)
+                let i = t.GetInterface(typeof(UpconvertEvents<,>).FullName)
                 where i != null
                 let sourceType = i.getGenericArguments().First()
                 let convertMethod = i.getMethods(BindingFlags.Public | BindingFlags.Instance).First()
@@ -33,20 +52,22 @@ public class UsingEventConverter {
                 select new KeyValuePair<Type, Func<Object, Object>>(
                 sourceType,
                     e => convertMethod.Invoke(instance, new[] { e }));
-			try {
-				return c.ToDictionary(x => x.Key, x => x.Value);
-			}
-			catch (IllegalArgumentException ex) {
-				throw new MultipleConvertersFoundException(ex.getMessage(), ex);
-			} */
+                        try {
+                            return c.ToDictionary(x => x.Key, x => x.Value);
+                        }
+                        catch (IllegalArgumentException ex) {
+                                throw new MultipleConvertersFoundException(ex.getMessage(), ex);
+                        } */
     }
 
     private static Iterable<Assembly> getAllAssemblies() {
-        throw new RuntimeException(); /*
-        return Assembly.getCallingAssembly()
-                       .getReferencedAssemblies()
-                       .select(Assembly.Load)
-                       .concat(new[] { Assembly.getCallingAssembly() }); */
+        Iterable<Assembly> referencedAssemblies = Assembly.getCallingAssembly().getReferencedAssemblies();
+        List<Assembly> allAssemblies = new LinkedList<Assembly>();
+        for(Assembly assembly : referencedAssemblies) {
+            assembly.load();
+            allAssemblies.add(Assembly.getCallingAssembly());
+        }
+        return allAssemblies;
     }
 
 }
@@ -92,7 +113,7 @@ public class UsingEventConverter {
 		{
 			var c = from a in toScan
 					from t in a.GetTypes()
-					let i = t.GetInterface(typeof(IUpconvertEvents<,>).FullName)
+					let i = t.GetInterface(typeof(UpconvertEvents<,>).FullName)
 					where i != null
 					let sourceType = i.GetGenericArguments().First()
 					let convertMethod = i.GetMethods(BindingFlags.Public | BindingFlags.Instance).First()
@@ -119,16 +140,16 @@ public class UsingEventConverter {
 		}
 	}
 
-	public class ConvertingEventConverter : IUpconvertEvents<ConvertingEvent, ConvertingEvent2>
+	public class ConvertingEventConverter : UpconvertEvents<ConvertingEvent, ConvertingEvent2>
 	{
 		public ConvertingEvent2 Convert(ConvertingEvent sourceEvent)
 		{
 			return new ConvertingEvent2(sourceEvent.Id, "Temp");
 		}
 	}
-	public class ExplicitConvertingEventConverter : IUpconvertEvents<ConvertingEvent2, ConvertingEvent3>
+	public class ExplicitConvertingEventConverter : UpconvertEvents<ConvertingEvent2, ConvertingEvent3>
 	{
-		ConvertingEvent3 IUpconvertEvents<ConvertingEvent2, ConvertingEvent3>.Convert(ConvertingEvent2 sourceEvent)
+		ConvertingEvent3 UpconvertEvents<ConvertingEvent2, ConvertingEvent3>.Convert(ConvertingEvent2 sourceEvent)
 		{
 			return new ConvertingEvent3(sourceEvent.Id, "Temp", true);
 		}
