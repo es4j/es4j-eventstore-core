@@ -6,9 +6,10 @@ import org.es4j.eventstore.api.Commit;
 import org.es4j.eventstore.api.IPipelineHook;
 import org.es4j.eventstore.core.Resources;
 import org.es4j.exceptions.ArgumentNullException;
+import org.es4j.messaging.api.EventMessage;
 import org.es4j.util.logging.ILog;
 import org.es4j.util.logging.LogFactory;
-import org.es4j.messaging.api.EventMessage;
+
 
 public class EventUpconverterPipelineHook implements IPipelineHook {
 

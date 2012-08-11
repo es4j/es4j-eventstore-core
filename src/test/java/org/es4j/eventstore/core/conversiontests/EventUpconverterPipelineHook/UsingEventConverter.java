@@ -7,7 +7,8 @@ import org.es4j.eventstore.core.conversion.EventUpconverterPipelineHook;
 import org.es4j.eventstore.core.conversion.Converter;
 import java.util.Map;
 import org.es4j.dotnet.Assembly;
-import org.es4j.dotnet.Type;
+//import org.es4j.dotnet.Assembly;
+//import org.es4j.dotnet.Type;
 import org.es4j.eventstore.api.conversion.UpconvertEvents;
 
 /**
@@ -27,11 +28,12 @@ public class UsingEventConverter {
     }
 
     private static Map<Class<?>, Converter<Object, Object>> getConverters(Iterable<Assembly> toScan) {
-        //throw new UnsupportedOperationException("Not yet implemented"); /* for now
+        throw new UnsupportedOperationException("Not yet implemented"); // for now
+        /*
         Map<Class<?>, Converter<Object, Object>> converters = new HashMap<Class<?>, Converter<Object, Object>>();
         for(Assembly a : toScan) {
             for(Type t : a.getTypes()) {
-                Type i = t.getInterface(UpconvertEvents/*<?,?>*/.class.getName());
+                Type i = t.getInterface(UpconvertEvents<?,?>.class.getName());
                 if(i != null) {
                     Type sourceType = i.getGenericArguments().iterator().next();
                 }
@@ -39,7 +41,7 @@ public class UsingEventConverter {
             
         }
         return converters;
-        
+        */
         
         /*
         var c = from a in toScan
@@ -61,6 +63,8 @@ public class UsingEventConverter {
     }
 
     private static Iterable<Assembly> getAllAssemblies() {
+        throw new UnsupportedOperationException("Not yet implemented");
+        /*
         Iterable<Assembly> referencedAssemblies = Assembly.getCallingAssembly().getReferencedAssemblies();
         List<Assembly> allAssemblies = new LinkedList<Assembly>();
         for(Assembly assembly : referencedAssemblies) {
@@ -68,6 +72,7 @@ public class UsingEventConverter {
             allAssemblies.add(Assembly.getCallingAssembly());
         }
         return allAssemblies;
+        */
     }
 
 }
