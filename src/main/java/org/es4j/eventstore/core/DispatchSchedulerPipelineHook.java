@@ -1,5 +1,7 @@
 package org.es4j.eventstore.core;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.es4j.dotnet.GC;
 import org.es4j.eventstore.api.Commit;
 import org.es4j.eventstore.api.IPipelineHook;
@@ -27,14 +29,18 @@ public class DispatchSchedulerPipelineHook implements IPipelineHook {
     }
 
     @Override
-    public void dispose() throws Exception {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }
 
     // virtual
-    protected void dispose(boolean disposing) throws Exception {
-        this.scheduler.close();  //.dispose();
+    protected void dispose(boolean disposing) {
+        try {
+            this.scheduler.close();  //.dispose();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override

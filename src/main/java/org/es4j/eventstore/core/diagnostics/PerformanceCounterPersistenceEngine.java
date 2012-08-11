@@ -1,6 +1,8 @@
 package org.es4j.eventstore.core.diagnostics;
 
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import org.es4j.dotnet.DateTime;
 import org.es4j.dotnet.GC;
 import org.es4j.dotnet.Stopwatch;
@@ -92,19 +94,23 @@ public class PerformanceCounterPersistenceEngine implements IPersistStreams {
         dispose();
     }
     @Override
-    public void dispose() throws Exception {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }
 
     // virtual
-    protected void dispose(boolean disposing) throws Exception {
+    protected void dispose(boolean disposing) {
         if (!disposing) {
             return;
         }
 
         this.counters   .close(); //.dispose();
-        this.persistence.close(); //.dispose();
+        try {
+            this.persistence.close(); //.dispose();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     private final PerformanceCounters counters;

@@ -34,21 +34,29 @@ public class OptimisticEventStore implements IStoreEvents, ICommitEvents {
     }
 
     @Override
-    public void dispose() throws Exception {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }
 
     //virtual
-    protected void dispose(boolean disposing) throws Exception {
+    protected void dispose(boolean disposing) {
         if (!disposing) {
             return;
         }
 
         logger.info(Resources.ShuttingDownStore());
-        this.persistence.close(); //.dispose();
+        try {
+            this.persistence.close(); //.dispose();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
         for (IPipelineHook hook : this.pipelineHooks) {
-            hook.close(); //.dispose();
+            try {
+                hook.close(); //.dispose();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 

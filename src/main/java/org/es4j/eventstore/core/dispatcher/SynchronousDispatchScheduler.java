@@ -1,7 +1,8 @@
 package org.es4j.eventstore.core.dispatcher;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.es4j.dotnet.GC;
-//import org.es4j.dotnet.exceptions.ObjectDisposedException;
 import org.es4j.eventstore.api.Commit;
 import org.es4j.eventstore.api.dispatcher.IDispatchCommits;
 import org.es4j.eventstore.api.dispatcher.IScheduleDispatches;
@@ -43,21 +44,29 @@ public class SynchronousDispatchScheduler implements IScheduleDispatches {
         dispose();
     }
     @Override
-    public void dispose() throws Exception {
+    public void dispose() {
         this.dispose(true);
         GC.suppressFinalize(this);
     }
 
     //virtual
-    protected void dispose(boolean disposing) throws Exception {
+    protected void dispose(boolean disposing) {
         if (!disposing || this.disposed) {
             return;
         }
 
         logger.debug(Resources.ShuttingDownDispatchScheduler());
         this.disposed = true;
-        this.dispatcher .close(); // .dispose();
-        this.persistence.close(); //.dispose();
+        try {
+            this.dispatcher .close(); // .dispose();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            this.persistence.close(); //.dispose();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     protected void start() {
